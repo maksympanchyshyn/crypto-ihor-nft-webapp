@@ -1,7 +1,11 @@
-import { Container } from './styled';
+import { Container, MintBtn } from './styled';
 
 const MintSection = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <MintBtn>Mint</MintBtn>
+    </Container>
+  );
 };
 
 export default MintSection;
