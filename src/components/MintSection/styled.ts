@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -48,4 +49,22 @@ export const MintBtn = styled.button`
   &:active {
     box-shadow: inset 4px 4px 0px 0px #e59400;
   }
+`;
+
+export const HeaderText = styled.div`
+  color: #eee;
+  font-size: 28px;
+`;
+
+export const Description = styled.div`
+  color: #eee;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 16px 0;
+  white-space: pre-wrap;
+`;
+
+export const ErrorMessage = styled.div`
+  color: #ce3715;
+  font-size: 20px;
 `;

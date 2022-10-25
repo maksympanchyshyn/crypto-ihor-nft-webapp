@@ -28,7 +28,7 @@ const App = () => {
   return (
     <div className="App">
       <NavBar account={account} setAccount={setAccount} />
-      <MintSection />
+      <MintSection account={account} />
     </div>
   );
 };

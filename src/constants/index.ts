@@ -11,4 +11,4 @@ export const SUPPORTED_NETWORKS = {
   },
 };
 
-export const CONTRACT_ADDRESS = '';
+export const CONTRACT_ADDRESS = '0xB4b4814cc23bc5C3EEECb263AfD99ADfc7FC0E76';
