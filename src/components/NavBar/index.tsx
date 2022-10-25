@@ -27,7 +27,7 @@ const NavBar = ({ account, setAccount }: NavBarProps) => {
       {isConnected ? (
         <Account>{`${account.slice(0, 6)}..${account.slice(-4)}`}</Account>
       ) : (
-        <ConnectBtn onClick={() => connectWallet()}>Connect wallet</ConnectBtn>
+        <ConnectBtn onClick={connectWallet}>Connect wallet</ConnectBtn>
       )}
     </Container>
   );
