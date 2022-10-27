@@ -79,6 +79,10 @@ export const ChangeAmountBtn = styled(PixelBtn)`
 
 export const MintAmountInput = styled.input`
   width: 240px;
+  font-family: inherit;
+  font-size: 18px;
+  color: #000;
+  text-align: center;
 `;
 
 export const ErrorMessage = styled.div`

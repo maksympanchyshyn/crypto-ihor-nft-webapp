@@ -43,9 +43,13 @@ const MintSection = ({ account }: MintSectionProps) => {
         {`Collection of 10,000 Ihor NFTs is finally here.\nMint your NFT now and join IhorVerse with us.\nPrice - 0.02 ETH. Max per wallet - 3`}
       </Description>
       <MintAmountContainer>
-        <ChangeAmountBtn>-</ChangeAmountBtn>
-        <MintAmountInput />
-        <ChangeAmountBtn>+</ChangeAmountBtn>
+        <ChangeAmountBtn onClick={() => setMintAmount(mintAmount - 1)} disabled={mintAmount === 1}>
+          -
+        </ChangeAmountBtn>
+        <MintAmountInput value={mintAmount} disabled />
+        <ChangeAmountBtn onClick={() => setMintAmount(mintAmount + 1)} disabled={mintAmount === 3}>
+          +
+        </ChangeAmountBtn>
       </MintAmountContainer>
       {account.length > 0 ? (
         <MintBtn onClick={handleMint}>Mint</MintBtn>
