@@ -68,6 +68,14 @@ export const Description = styled.div`
   white-space: pre-wrap;
 `;
 
+export const MintProgress = styled.div`
+  color: #eee;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 16px 0;
+  white-space: pre-wrap;
+`;
+
 export const MintAmountContainer = styled.div`
   display: flex;
   margin: 12px 0;

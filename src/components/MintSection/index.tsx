@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ethers, BigNumber } from 'ethers';
 
 import {
@@ -10,6 +10,7 @@ import {
   MintAmountContainer,
   MintAmountInput,
   MintBtn,
+  MintProgress,
 } from './styled';
 import { CONTRACT_ADDRESS } from '../../constants';
 import CryptoIhorNFT from '../../CryptoIhorNFT.json';
@@ -20,6 +21,7 @@ export type MintSectionProps = {
 
 const MintSection = ({ account }: MintSectionProps) => {
   const [mintAmount, setMintAmount] = useState(1);
+  const [mintedAmount, setMintedAmount] = useState(0);
 
   const handleMint = async () => {
     try {
@@ -36,23 +38,36 @@ const MintSection = ({ account }: MintSectionProps) => {
     }
   };
 
+  useEffect(() => {
+    (async () => {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, CryptoIhorNFT.abi, provider);
+      const amount = await contract.totalSupply();
+      setMintedAmount(Number(amount));
+    })();
+  }, []);
+
   return (
     <Container>
       <HeaderText>CryptoIhor NFT</HeaderText>
       <Description>
         {`Collection of 10,000 Ihor NFTs is finally here.\nMint your NFT now and join IhorVerse with us.\nPrice - 0.02 ETH. Max per wallet - 3`}
       </Description>
-      <MintAmountContainer>
-        <ChangeAmountBtn onClick={() => setMintAmount(mintAmount - 1)} disabled={mintAmount === 1}>
-          -
-        </ChangeAmountBtn>
-        <MintAmountInput value={mintAmount} disabled />
-        <ChangeAmountBtn onClick={() => setMintAmount(mintAmount + 1)} disabled={mintAmount === 3}>
-          +
-        </ChangeAmountBtn>
-      </MintAmountContainer>
+      <MintProgress>Mint progress: {mintedAmount}/10, 000</MintProgress>
       {account.length > 0 ? (
-        <MintBtn onClick={handleMint}>Mint</MintBtn>
+        <>
+          <MintAmountContainer>
+            <ChangeAmountBtn onClick={() => setMintAmount(mintAmount - 1)} disabled={mintAmount === 1}>
+              -
+            </ChangeAmountBtn>
+            <MintAmountInput value={mintAmount} disabled />
+            <ChangeAmountBtn onClick={() => setMintAmount(mintAmount + 1)} disabled={mintAmount === 3}>
+              +
+            </ChangeAmountBtn>
+          </MintAmountContainer>
+
+          <MintBtn onClick={handleMint}>Mint</MintBtn>
+        </>
       ) : (
         <ErrorMessage>Connect your wallet to be able to mint</ErrorMessage>
       )}
