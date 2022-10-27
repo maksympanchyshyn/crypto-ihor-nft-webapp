@@ -1,7 +1,16 @@
 import { useState } from 'react';
 import { ethers, BigNumber } from 'ethers';
 
-import { Container, Description, ErrorMessage, HeaderText, MintBtn } from './styled';
+import {
+  ChangeAmountBtn,
+  Container,
+  Description,
+  ErrorMessage,
+  HeaderText,
+  MintAmountContainer,
+  MintAmountInput,
+  MintBtn,
+} from './styled';
 import { CONTRACT_ADDRESS } from '../../constants';
 import CryptoIhorNFT from '../../CryptoIhorNFT.json';
 
@@ -33,6 +42,11 @@ const MintSection = ({ account }: MintSectionProps) => {
       <Description>
         {`Collection of 10,000 Ihor NFTs is finally here.\nMint your NFT now and join IhorVerse with us.\nPrice - 0.02 ETH. Max per wallet - 3`}
       </Description>
+      <MintAmountContainer>
+        <ChangeAmountBtn>-</ChangeAmountBtn>
+        <MintAmountInput />
+        <ChangeAmountBtn>+</ChangeAmountBtn>
+      </MintAmountContainer>
       {account.length > 0 ? (
         <MintBtn onClick={handleMint}>Mint</MintBtn>
       ) : (

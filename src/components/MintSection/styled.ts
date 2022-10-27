@@ -8,12 +8,11 @@ export const Container = styled.div`
   align-content: center;
 `;
 
-export const MintBtn = styled.button`
+export const PixelBtn = styled.button`
   cursor: pointer;
   outline: none;
   border: none;
   color: #fff;
-  padding: 8px 16px;
   font-size: 24px;
   font-family: inherit;
   position: relative;
@@ -51,6 +50,11 @@ export const MintBtn = styled.button`
   }
 `;
 
+export const MintBtn = styled(PixelBtn)`
+  padding: 8px 16px;
+  margin: 10px;
+`;
+
 export const HeaderText = styled.div`
   color: #eee;
   font-size: 28px;
@@ -62,6 +66,19 @@ export const Description = styled.div`
   line-height: 26px;
   margin: 16px 0;
   white-space: pre-wrap;
+`;
+
+export const MintAmountContainer = styled.div`
+  display: flex;
+  margin: 12px 0;
+`;
+
+export const ChangeAmountBtn = styled(PixelBtn)`
+  padding: 4px;
+`;
+
+export const MintAmountInput = styled.input`
+  width: 240px;
 `;
 
 export const ErrorMessage = styled.div`
