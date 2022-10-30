@@ -9,8 +9,8 @@ import {
   HeaderText,
   MintAmountContainer,
   MintAmountInput,
-  MintBtn,
   MintProgress,
+  PixelBtn,
 } from './styled';
 import { CONTRACT_ADDRESS, SUPPORTED_NETWORKS } from '../../constants';
 import CryptoIhorNFT from '../../CryptoIhorNFT.json';
@@ -87,11 +87,16 @@ const MintSection = ({ account, isChainValid }: MintSectionProps) => {
             </ChangeAmountBtn>
           </MintAmountContainer>
 
-          <MintBtn onClick={handleMint}>Mint</MintBtn>
+          <PixelBtn onClick={handleMint}>Mint</PixelBtn>
         </>
       )}
       {!isConnected && <ErrorMessage>Connect your wallet to be able to mint</ErrorMessage>}
-      {isConnected && !isChainValid && <ErrorMessage>Wrong Network</ErrorMessage>}
+      {isConnected && !isChainValid && (
+        <>
+          <ErrorMessage>Wrong Network</ErrorMessage>
+          <PixelBtn onClick={switchChain}>Switch</PixelBtn>
+        </>
+      )}
     </Container>
   );
 };

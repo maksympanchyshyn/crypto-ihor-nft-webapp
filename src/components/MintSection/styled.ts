@@ -18,6 +18,8 @@ export const PixelBtn = styled.button`
   position: relative;
   background: #f7d51d;
   box-shadow: inset -4px -4px 0px 0px #e59400;
+  padding: 8px 16px;
+  margin: 10px;
 
   &:before {
     top: -6px;
@@ -50,11 +52,6 @@ export const PixelBtn = styled.button`
   }
 `;
 
-export const MintBtn = styled(PixelBtn)`
-  padding: 8px 16px;
-  margin: 10px;
-`;
-
 export const HeaderText = styled.div`
   color: #eee;
   font-size: 28px;
@@ -83,6 +80,7 @@ export const MintAmountContainer = styled.div`
 
 export const ChangeAmountBtn = styled(PixelBtn)`
   padding: 4px;
+  margin: 0;
 `;
 
 export const MintAmountInput = styled.input`
@@ -96,4 +94,5 @@ export const MintAmountInput = styled.input`
 export const ErrorMessage = styled.div`
   color: #ce3715;
   font-size: 20px;
+  margin: 16px;
 `;
