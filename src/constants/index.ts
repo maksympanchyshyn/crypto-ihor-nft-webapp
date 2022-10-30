@@ -5,7 +5,7 @@ export const LOCAL_STORAGE_KEYS = {
 export const SUPPORTED_NETWORKS = {
   GOERLI: {
     chainName: 'Goerli test network',
-    chainId: 5,
+    chainId: '0x5',
     nativeCurrency: { name: 'ETH', decimals: 18, symbol: 'ETH' },
     rpcUrls: ['https://goerli.infura.io/v3/'],
   },

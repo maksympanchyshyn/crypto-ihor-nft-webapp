@@ -12,16 +12,19 @@ import {
   MintBtn,
   MintProgress,
 } from './styled';
-import { CONTRACT_ADDRESS } from '../../constants';
+import { CONTRACT_ADDRESS, SUPPORTED_NETWORKS } from '../../constants';
 import CryptoIhorNFT from '../../CryptoIhorNFT.json';
 
 export type MintSectionProps = {
   account: string;
+  isChainValid: boolean;
 };
 
-const MintSection = ({ account }: MintSectionProps) => {
+const MintSection = ({ account, isChainValid }: MintSectionProps) => {
   const [mintAmount, setMintAmount] = useState(1);
   const [mintedAmount, setMintedAmount] = useState(0);
+
+  const isConnected = account.length > 0;
 
   const handleMint = async () => {
     try {
@@ -47,15 +50,33 @@ const MintSection = ({ account }: MintSectionProps) => {
     })();
   }, []);
 
+  const switchChain = async () => {
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: SUPPORTED_NETWORKS.GOERLI.chainId }],
+      });
+    } catch (err: any) {
+      // This error code indicates that the chain has not been added to MetaMask
+      if (err.code === 4902) {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [SUPPORTED_NETWORKS.GOERLI],
+        });
+      }
+    }
+  };
+
   return (
     <Container>
       <HeaderText>CryptoIhor NFT</HeaderText>
       <Description>
         {`Collection of 10,000 Ihor NFTs is finally here.\nMint your NFT now and join IhorVerse with us.\nPrice - 0.02 ETH. Max per wallet - 3`}
       </Description>
-      <MintProgress>Mint progress: {mintedAmount}/10, 000</MintProgress>
-      {account.length > 0 ? (
+
+      {isConnected && isChainValid && (
         <>
+          <MintProgress>Mint progress: {mintedAmount}/10, 000</MintProgress>
           <MintAmountContainer>
             <ChangeAmountBtn onClick={() => setMintAmount(mintAmount - 1)} disabled={mintAmount === 1}>
               -
@@ -68,9 +89,9 @@ const MintSection = ({ account }: MintSectionProps) => {
 
           <MintBtn onClick={handleMint}>Mint</MintBtn>
         </>
-      ) : (
-        <ErrorMessage>Connect your wallet to be able to mint</ErrorMessage>
       )}
+      {!isConnected && <ErrorMessage>Connect your wallet to be able to mint</ErrorMessage>}
+      {isConnected && !isChainValid && <ErrorMessage>Wrong Network</ErrorMessage>}
     </Container>
   );
 };
