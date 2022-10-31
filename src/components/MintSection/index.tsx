@@ -71,12 +71,12 @@ const MintSection = ({ account, isChainValid }: MintSectionProps) => {
     <Container>
       <HeaderText>CryptoIhor NFT</HeaderText>
       <Description>
-        {`Collection of 10,000 Ihor NFTs is finally here.\nMint your NFT now and join IhorVerse with us.\nPrice - 0.02 ETH. Max per wallet - 3`}
+        {`Collection of 1000 Ihor NFTs is finally here.\nMint your NFT now and join IhorVerse with us.\nPrice - 0.02 ETH. Max per wallet - 3`}
       </Description>
 
       {isConnected && isChainValid && (
         <>
-          <MintProgress>Mint progress: {mintedAmount}/10, 000</MintProgress>
+          <MintProgress>Mint progress: {mintedAmount}/1000</MintProgress>
           <MintAmountContainer>
             <ChangeAmountBtn onClick={() => setMintAmount(mintAmount - 1)} disabled={mintAmount === 1}>
               -

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import NavBar from './components/NavBar';
 import MintSection from './components/MintSection';
-
+import { IhorObject } from './components/common/styled';
 import { LOCAL_STORAGE_KEYS, SUPPORTED_NETWORKS } from './constants';
 
 const App = () => {
@@ -38,6 +38,7 @@ const App = () => {
     <div className="App">
       <NavBar account={account} setAccount={setAccount} />
       <MintSection account={account} isChainValid={isChainValid} />
+      <IhorObject />
     </div>
   );
 };
