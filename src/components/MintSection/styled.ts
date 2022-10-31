@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +14,7 @@ export const PixelBtn = styled.button`
   outline: none;
   border: none;
   color: #fff;
-  font-size: 24px;
+  font-size: 1.6rem;
   font-family: inherit;
   position: relative;
   background: #f7d51d;
@@ -54,21 +55,21 @@ export const PixelBtn = styled.button`
 
 export const HeaderText = styled.div`
   color: #eee;
-  font-size: 28px;
+  font-size: 2rem;
 `;
 
 export const Description = styled.div`
   color: #eee;
-  font-size: 18px;
-  line-height: 26px;
-  margin: 16px 0;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  margin: 24px 0;
   white-space: pre-wrap;
 `;
 
 export const MintProgress = styled.div`
   color: #eee;
-  font-size: 18px;
-  line-height: 26px;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   margin: 16px 0;
   white-space: pre-wrap;
 `;
@@ -86,13 +87,13 @@ export const ChangeAmountBtn = styled(PixelBtn)`
 export const MintAmountInput = styled.input`
   width: 240px;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 1.2rem;
   color: #000;
   text-align: center;
 `;
 
 export const ErrorMessage = styled.div`
   color: #ce3715;
-  font-size: 20px;
+  font-size: 1.25rem;
   margin: 16px;
 `;
